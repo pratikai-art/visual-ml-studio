@@ -1,0 +1,12 @@
+[project]
+name = "visual-ml-studio-backend"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["fastapi>=0.110", "uvicorn[standard]", "pydantic>=2", "pandas>=2.1", "numpy", "scikit-learn>=1.4", "plotly>=5.20",
+                "nbformat", "openpyxl", "pyarrow", "python-multipart"]
+[project.optional-dependencies]
+test = ["pytest", "httpx", "nbclient", "ipykernel"]
+optional = ["xgboost", "lightgbm", "catboost", "shap", "optuna", "umap-learn"]
+deep-learning = ["torch>=2.0"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]

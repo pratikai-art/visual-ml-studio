@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Visual ML Studio</title><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>" /></head>
+<body>
+<div id="root"></div>
+<div id="startup-error" hidden>
+  <h1>Visual ML Studio could not start</h1>
+  <p>Run the frontend with <code>npm install</code> and <code>npm run dev</code>, then open the URL shown by Vite.</p>
+  <p>Alternatively, start the backend and open <code>http://localhost:8000</code>.</p>
+</div>
+<script>
+  window.setTimeout(function () {
+    var root = document.getElementById("root");
+    var error = document.getElementById("startup-error");
+    if (root && !root.hasChildNodes() && error) error.hidden = false;
+  }, 3000);
+</script>
+<script type="module" src="/src/main.tsx"></script>
+</body></html>

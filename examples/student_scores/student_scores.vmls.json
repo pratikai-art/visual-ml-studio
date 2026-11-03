@@ -1,0 +1,347 @@
+{
+  "format": "visual-ml-studio-project",
+  "version": 1,
+  "name": "Student scores: regression pipeline",
+  "saved_at": "2026-11-02T06:30:43.986Z",
+  "settings": {
+    "mode": "beginner"
+  },
+  "journal": {},
+  "datasets": [],
+  "nodes": [
+    {
+      "id": "d",
+      "type": "card",
+      "position": {
+        "x": 60,
+        "y": 140
+      },
+      "data": {
+        "type": "data_input",
+        "params": {
+          "source": "builtin",
+          "builtin": "student_scores",
+          "dataset_id": "",
+          "rows": 300,
+          "seed": 42,
+          "sample_rows": 0
+        }
+      }
+    },
+    {
+      "id": "x",
+      "type": "card",
+      "position": {
+        "x": 350,
+        "y": 140
+      },
+      "data": {
+        "type": "data_explorer",
+        "params": {}
+      }
+    },
+    {
+      "id": "mv",
+      "type": "card",
+      "position": {
+        "x": 640,
+        "y": 140
+      },
+      "data": {
+        "type": "missing_analysis",
+        "params": {}
+      }
+    },
+    {
+      "id": "t",
+      "type": "card",
+      "position": {
+        "x": 930,
+        "y": 140
+      },
+      "data": {
+        "type": "select_target",
+        "params": {
+          "target": "Exam_Score",
+          "task": "regression",
+          "features": []
+        }
+      }
+    },
+    {
+      "id": "s",
+      "type": "card",
+      "position": {
+        "x": 1220,
+        "y": 140
+      },
+      "data": {
+        "type": "train_test_split",
+        "params": {
+          "test_size": 0.2,
+          "seed": 42,
+          "shuffle": true,
+          "stratify": true,
+          "time_column": ""
+        }
+      }
+    },
+    {
+      "id": "im",
+      "type": "card",
+      "position": {
+        "x": 1510,
+        "y": 140
+      },
+      "data": {
+        "type": "pp_imputer",
+        "params": {
+          "strategy": "median",
+          "apply_to": "numeric",
+          "fill_value": "0",
+          "n_neighbors": 5,
+          "columns": []
+        }
+      }
+    },
+    {
+      "id": "sc",
+      "type": "card",
+      "position": {
+        "x": 1800,
+        "y": 140
+      },
+      "data": {
+        "type": "pp_scaler",
+        "params": {
+          "method": "standard",
+          "degree": 2,
+          "columns": []
+        }
+      }
+    },
+    {
+      "id": "rf",
+      "type": "card",
+      "position": {
+        "x": 2090,
+        "y": 100
+      },
+      "data": {
+        "type": "reg_random_forest",
+        "params": {
+          "n_estimators": 100,
+          "max_depth": null,
+          "min_samples_split": 2,
+          "min_samples_leaf": 1,
+          "max_features": "all",
+          "bootstrap": true,
+          "random_state": 42,
+          "cv_folds": 0,
+          "cv_scoring": "auto",
+          "search": "none",
+          "search_space": "{}",
+          "n_iter": 10
+        }
+      }
+    },
+    {
+      "id": "ev",
+      "type": "card",
+      "position": {
+        "x": 2380,
+        "y": 100
+      },
+      "data": {
+        "type": "evaluate",
+        "params": {
+          "average": "macro",
+          "positive_class": ""
+        }
+      }
+    },
+    {
+      "id": "avp",
+      "type": "card",
+      "position": {
+        "x": 2670,
+        "y": 0
+      },
+      "data": {
+        "type": "chart_model",
+        "params": {
+          "chart": "actual_vs_predicted",
+          "normalize": false,
+          "top_n": 15,
+          "n_repeats": 5
+        }
+      }
+    },
+    {
+      "id": "fi",
+      "type": "card",
+      "position": {
+        "x": 2670,
+        "y": 210
+      },
+      "data": {
+        "type": "chart_model",
+        "params": {
+          "chart": "feature_importance",
+          "normalize": false,
+          "top_n": 15,
+          "n_repeats": 5
+        }
+      }
+    },
+    {
+      "id": "rd",
+      "type": "card",
+      "position": {
+        "x": 2090,
+        "y": 410
+      },
+      "data": {
+        "type": "reg_ridge",
+        "params": {
+          "alpha": 1,
+          "cv_folds": 0,
+          "cv_scoring": "auto",
+          "search": "none",
+          "search_space": "{}",
+          "n_iter": 10
+        }
+      }
+    },
+    {
+      "id": "ev2",
+      "type": "card",
+      "position": {
+        "x": 2380,
+        "y": 410
+      },
+      "data": {
+        "type": "evaluate",
+        "params": {
+          "average": "macro",
+          "positive_class": ""
+        }
+      }
+    },
+    {
+      "id": "cmp",
+      "type": "card",
+      "position": {
+        "x": 2670,
+        "y": 410
+      },
+      "data": {
+        "type": "compare_models",
+        "params": {
+          "metric": "auto"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "t0",
+      "source": "d",
+      "target": "x",
+      "sourceHandle": "dataset",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "t1",
+      "source": "x",
+      "target": "mv",
+      "sourceHandle": "dataset",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "t2",
+      "source": "mv",
+      "target": "t",
+      "sourceHandle": "dataset",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "t3",
+      "source": "t",
+      "target": "s",
+      "sourceHandle": "dataset",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "t4",
+      "source": "s",
+      "target": "im",
+      "sourceHandle": "split",
+      "targetHandle": "split"
+    },
+    {
+      "id": "t5",
+      "source": "im",
+      "target": "sc",
+      "sourceHandle": "split",
+      "targetHandle": "split"
+    },
+    {
+      "id": "t6",
+      "source": "sc",
+      "target": "rf",
+      "sourceHandle": "split",
+      "targetHandle": "split"
+    },
+    {
+      "id": "t7",
+      "source": "rf",
+      "target": "ev",
+      "sourceHandle": "trained",
+      "targetHandle": "trained"
+    },
+    {
+      "id": "t8",
+      "source": "rf",
+      "target": "avp",
+      "sourceHandle": "trained",
+      "targetHandle": "trained"
+    },
+    {
+      "id": "t9",
+      "source": "rf",
+      "target": "fi",
+      "sourceHandle": "trained",
+      "targetHandle": "trained"
+    },
+    {
+      "id": "t10",
+      "source": "sc",
+      "target": "rd",
+      "sourceHandle": "split",
+      "targetHandle": "split"
+    },
+    {
+      "id": "t11",
+      "source": "rd",
+      "target": "ev2",
+      "sourceHandle": "trained",
+      "targetHandle": "trained"
+    },
+    {
+      "id": "t12",
+      "source": "ev",
+      "target": "cmp",
+      "sourceHandle": "metrics",
+      "targetHandle": "metrics"
+    },
+    {
+      "id": "t13",
+      "source": "ev2",
+      "target": "cmp",
+      "sourceHandle": "metrics",
+      "targetHandle": "metrics"
+    }
+  ],
+  "results": null
+}

@@ -1,0 +1,27 @@
+Metadata-Version: 2.4
+Name: visual-ml-studio-backend
+Version: 0.1.0
+Requires-Python: >=3.10
+Requires-Dist: fastapi>=0.110
+Requires-Dist: uvicorn[standard]
+Requires-Dist: pydantic>=2
+Requires-Dist: pandas>=2.1
+Requires-Dist: numpy
+Requires-Dist: scikit-learn>=1.4
+Requires-Dist: plotly>=5.20
+Requires-Dist: nbformat
+Requires-Dist: openpyxl
+Requires-Dist: pyarrow
+Requires-Dist: python-multipart
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: httpx; extra == "test"
+Requires-Dist: nbclient; extra == "test"
+Requires-Dist: ipykernel; extra == "test"
+Provides-Extra: optional
+Requires-Dist: xgboost; extra == "optional"
+Requires-Dist: lightgbm; extra == "optional"
+Requires-Dist: catboost; extra == "optional"
+Requires-Dist: shap; extra == "optional"
+Requires-Dist: optuna; extra == "optional"
+Requires-Dist: umap-learn; extra == "optional"
